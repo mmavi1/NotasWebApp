@@ -1,0 +1,64 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+}
+body {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    align-items: center;
+}
+
+section {
+        
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas: 
+        'primeiro'
+        'segundo';
+}
+
+#cabecario-imagem {grid-area: primeiro;}
+#login {grid-area: segundo;}
+
+#cabecario-imagem {
+    background-image: url(../img/imagem-perfil.png);
+    width: auto;
+    height: 200px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+section > div {
+    
+    width: 500px;
+    padding-top: 10px;    
+}
+
+
+#login {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    gap: 8px;
+   
+}
+#nomeUsuario {
+    text-align: center;
+}
+#botao {
+    text-align: center;
+}
+
+input {
+    border-color: black;
+    border-radius: 5px;
+}
+
+button {
+    width: 100px;
+    height: 50px;
+
+}
