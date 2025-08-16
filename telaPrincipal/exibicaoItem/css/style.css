@@ -56,8 +56,8 @@ main > section {
 
 
 #editaLixo {
-    position: absolute;
-    right: 35.3%;
+    position: relative;
+    right: 35.3;
     bottom: 28%;
     display: flex;
     flex-flow: column wrap;
@@ -73,7 +73,7 @@ textarea {
       outline: none;
       resize: none;
       padding-bottom: 220px;
-      position: absolute;
+      position: relative;
         
       
       
