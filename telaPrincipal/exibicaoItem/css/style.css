@@ -1,0 +1,92 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    align-items: center;
+}
+main {
+    border: 1px solid black;
+    border-radius: 20px;
+    height: auto;
+    padding: 10px;
+    width: 250px;
+
+}
+.anotacao {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 35px 15px 300px;
+    
+}
+
+main > section {
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 5px;
+}
+
+.cabecalho {  
+    
+    padding: 0px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+#linha {
+    border-width: 0px 0px 5px 0px;
+    border-style: solid;
+    border-color: black;
+    width: 98%;
+    border-radius: 3px;
+    position: relative;
+    left: 2.5px;
+
+}
+#blocoAnotacao {
+    
+    padding: 5px;
+}
+
+
+#editaLixo {
+    position: relative;
+    right: 35.3;
+    bottom: 28%;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: end;
+    
+
+}
+
+
+textarea {
+      
+      border: none;
+      outline: none;
+      resize: none;
+      padding-bottom: 220px;
+      position: relative;
+        
+      
+      
+}
+
+
+footer {
+    border: 1px solid black;
+    border-radius: 2px;
+    width: 75%;
+    height: 10px;
+    position: relative;
+    left: 15%;
+    top: 5px;
+}
+
