@@ -70,19 +70,41 @@ jobs:
           user_name: "github-actions[bot]"
           user_email: "41898282+github-actions[bot]@users.noreply.github.com"
 
-      # --- Comentar a URL no PR (somente em pull_request) ---
+      # Comenta a URL no PR — funciona:
+      # 1) quando é evento pull_request
+      # 2) quando é push com PR associado ao commit (busca via API)
       - name: Comentar URL do preview no PR
-        if: ${{ github.event_name == 'pull_request' }}
         uses: actions/github-script@v7
+        env:
+          DEST_DIR: ${{ steps.dest.outputs.dir }}
         with:
           script: |
-            const repo = context.repo.repo;
             const owner = context.repo.owner;
-            const pr = context.payload.number;
-            // Monta a URL base do Pages: user/org + repo
-            // https://<owner>.github.io/<repo>/<subpasta>
+            const repo  = context.repo.repo;
+
+            // Descobrir o número do PR:
+            let prNumber = null;
+            if (context.eventName === 'pull_request') {
+              prNumber = context.payload.number;
+            } else if (context.eventName === 'push') {
+              // Procura PR(s) associados ao commit desta execução
+              const res = await github.rest.repos.listPullRequestsAssociatedWithCommit({
+                owner, repo, commit_sha: context.sha
+              });
+              const openPR = res.data.find(pr => pr.state === 'open');
+              if (openPR) prNumber = openPR.number;
+            }
+
+            if (!prNumber) {
+              core.info('Nenhum PR associado encontrado; nada a comentar.');
+              return;
+            }
+
+            // Monta a URL pública do Pages
             const base = `https://${owner}.github.io/${repo}`;
-            const path = `preview/pr-${pr}`;
-            const url = `${base}/${path}/`;
-            const body = `🔍 **PR Preview publicado**: ${url}`;
-            await github.rest.issues.createComment({ owner, repo, issue_number: pr, body });
+            const dest = process.env.DEST_DIR;
+            // normalizar caminho (raiz vs subpastas)
+            const url  = dest === '.' ? `${base}/` : `${base}/${dest.replace(/^\/*/, '')}/`;
+
+            const body = `🔍 **PR Preview publicado:** ${url}`;
+            await github.rest.issues.createComment({ owner, repo, issue_number: prNumber, body });
