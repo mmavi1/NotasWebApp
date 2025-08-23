@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background: #0f172a;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .phone {
+    background-color: #1e293b;
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+    height: 550px;
+    gap: 30px;
+    border-radius: 20px;
+    padding: 30px;
+  }
+  .name{
+    display: flex;
+    justify-content: center;
+    font-size: 24px;
+    font-family: "DM Serif Text", serif;
+  }
+  
+  .app-title {
+    font-size: 1.5rem;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .logo {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    margin: 0 auto;
+  }
+ .form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+ }
+ .inputemailsenha{
+    position:relative;
+    border-radius: 10px;
+    height: 35px;
+    top: 25px;
+
+ }
+ .enter {
+  padding: 9px 113px;
+  background-color: #007BFF;
+  color: white;
+  text-decoration: none;
+  top: 65px;
+  border: none;
+  border-radius: 10px;
+  position: relative;
+  
+
+}
+
+ .bar {
+    position: relative;
+    top: 120px;
+    background-color: white;
+     width: 150px;           
+    height: 10px;      
+    border-radius: 20px;    
+    left: 52px;
+}
+  

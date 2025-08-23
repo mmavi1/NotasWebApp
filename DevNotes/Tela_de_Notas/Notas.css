@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'DM Serif Text', serif;
+  background: #0f172a;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.phone {
+  background-color: #1e293b;
+  width: 320px;
+  height: 600px;
+
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #0f172a;
+  padding: 10px;
+  border-radius: 15px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+.adicao{
+border-radius: 25px;
+width: 27px;
+height: 27px;
+
+}
+
+.pesquisar{
+   border-radius: 25px;
+   height: 25px;
+   padding: 7px;
+ 
+}
+.icon-btn{
+  border-radius: 25px;
+  height: 30px;
+  width: 30px;
+
+}
+.input-tarefa{
+  background-color: white;
+  width: 275px;
+  height: 115px;
+  border-radius: 20px;
+  resize: none;
+  padding-block: 20px;
+  padding-left: 5px;
+  padding-top: 35px;
+  font-size: 15px;
+  
+}
+.butao {
+  position: relative;
+  top: -49px;     
+  left: 240px;    
+  width: 25px;    
+  height: 25px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+.butao img {
+  position: relative;
+  left: -25px;
+  width: 80%;    
+  height: 80%;
+  top: 20px;
+  
+}
+
+.input-titulo {
+  position: relative;
+  top: 34px;
+  width: 90%;
+  left: 10px;
+  display: flex;
+  text-align: center;
+  height: 25px;
+  color: rgb(15, 15, 15);
+  font-size: 15px;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+

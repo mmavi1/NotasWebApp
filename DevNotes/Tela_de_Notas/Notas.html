@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Tarefas</title>
+  <link rel="stylesheet" href="Notas.css">
+</head>
+<body>
+  <main class="phone">
+    <header class="top-bar">
+      <button class="icon-btn">👤</button>
+      <input type="text" placeholder="Pesquisar... 🔍" class="pesquisar">
+      <a href="../Tela de editar/Editar.html">
+        <button class="adicao">➕</button>
+      </a>    
+    </header>
+
+    <section>
+      <div class="bloco">
+        <input type="text" class="input-titulo" placeholder="Título da tarefa" maxlength="20"> 
+        <textarea class="input-tarefa"  maxlength="96"></textarea>
+        <div class="acoes">
+          <button class="butao excluir">
+            <img src="img/lixeira.png" alt="Excluir">
+          </button>
+          <button class="butao" onclick="location.href='../Tela de editar/Editar.html'">
+            <img src="img/lapis.png" alt="Editar">
+          </button>
+        </div>
+      </div>
+      
+      <div class="bloco">
+        <input type="text" class="input-titulo" placeholder="Título da tarefa" maxlength="20">
+        <textarea class="input-tarefa" maxlength="96"></textarea>
+        <div class="acoes">
+          <button class="butao excluir">
+            <img src="img/lixeira.png" alt="Excluir">
+          </button>
+          <button class="butao">
+            <img src="img/lapis.png" alt="Editar">
+          </button>
+        </div>
+      </div>
+      
+      <div class="bloco">
+        <input type="text" class="input-titulo" placeholder="Título da tarefa" maxlength="20">
+        <textarea class="input-tarefa"  maxlength="96"></textarea>
+        <div class="acoes">
+          <button class="butao excluir">
+            <img src="img/lixeira.png" alt="Excluir">
+          </button>
+          <button class="butao">
+            <img src="img/lapis.png" alt="Editar">
+          </button>
+        </div>
+      </div>
+      
+    </section>
+  </main>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const botoesExcluir = document.querySelectorAll('.butao.excluir');
+    botoesExcluir.forEach(function (botao) {
+      botao.addEventListener('click', function () {
+        const bloco = botao.closest('.bloco');
+        if (bloco) {
+          bloco.remove()
+        }
+      });
+    });
+  });
+  </script>
+  
+</body>
+</html>
