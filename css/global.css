@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background: #0f172a;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .phone {
+    background-color: #1e293b;
+    display: flex;
+    flex-direction: column;
+    width: 340px;
+    height: 550px; /* altura fixa */
+    overflow-y: scroll;
+    overflow-x:hidden;
+    gap: 30px;
+    border-radius: 20px;
+    padding: 30px;
+  }
