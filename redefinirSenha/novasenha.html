@@ -1,0 +1,52 @@
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/modoescuroeclaro.css">
+  <title>Redefinir Senha MM</title>
+</head>
+
+<body>
+  <div class="iphone-frame">
+    <div class="status-bar">
+      <div id="clock">00:00</div>
+      <div>📶 🔋</div>
+    </div>
+
+    <div class="nav-bar">
+      <span>Nosso App blocos de notas</span>
+      <span class="dark-toggle" onclick="toggleDark()">🌙</span>
+    </div>
+
+    <div class="login-box">
+      <div class="logo">MM</div>
+      <h2>🔑 Redefinir Senha</h2>
+      <form id="novaSenhaForm">
+        <div class="input-group">
+          <label for="email">Email de Recuperação</label>
+          <input type="email" id="email" placeholder="Digite seu email" required>
+        </div>
+        <div class="input-group">
+          <label for="novaSenha">Nova Senha</label>
+          <input type="password" id="novaSenha" placeholder="Digite a nova senha" required>
+        </div>
+        <div class="input-group">
+          <label for="confirmarSenha">Confirmar Senha</label>
+          <input type="password" id="confirmarSenha" placeholder="Confirme a nova senha" required>
+        </div>
+        <button type="submit" class="btn">Salvar Nova Senha</button>
+      </form>
+    </div>
+
+    <div class="tab-bar">
+    </div>
+  </div>
+
+  <script src="../js/utils/modoescuroeclaro.js"></script>
+  <script src="../js/utils/relogio.js"></script>
+  <script src="../js/auth/novasenha.js"></script>
+</body>
+
+</html>

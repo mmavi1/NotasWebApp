@@ -2,29 +2,50 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Tela de Login</title>
-  <link rel="stylesheet" href="css/login/Login.css"/>
-  <link rel="stylesheet" href="css/global.css"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/modoescuroeclaro.css">
+  <title>Tela de login MM</title>
 </head>
 <body>
-  <main class="phone">
-    <h1 class="app-title">Chiquinho.Net</h1>
-    <img src="img/chiquinhoDotNet.jpeg" class="logo" />
+  <div class="iphone-frame">
+    <div class="status-bar">
+      <div id="clock">00:00</div>
+      <div>📶 🔋</div>
+    </div>
 
-    <section>
-      
-      <p class="name">Felipe Miguel</p>
-
-      <form class="form" action="#" method="post">
-        <input type="email" name="email" placeholder="Email" required class="inputemailsenha">
-        <input type="password" name="senha" placeholder="Senha" required class="inputemailsenha">
-        <a href="telaNotas/Notas.html" class="enter">Entrar</a>
-
+    <div class="nav-bar">
+      <span>Nosso App blocos de notas</span>
+      <span class="dark-toggle" onclick="toggleDark()">🌙</span>
+    </div>
+    <div class="login-box">
+      <div class="logo">MM</div>
+      <h2>Bem-vindo!</h2>
+     <form id="loginForm">
+        <div class="input-group">
+          <label for="email_usuario">Email:</label>
+          <input type="email" id="email" placeholder="Digite seu email">
+        </div>
+        <div class="input-group">
+          <label for="pwd">Senha:</label>
+          <input type="password" id="senha" placeholder="Digite sua senha">
+        </div>
+        <button type="submit" class="btn">Entrar</button>
       </form>
-    </section>
-
-  </main>
+      <div class="extra-links">
+        <a href="redefinirSenha/novasenha.html">Esqueceu a senha?</a> |
+        <a href="telaCadastro/criarconta.html">Criar conta</a>
+      </div>
+    </div>
+      <div class="tab-bar">
+    </div>
+    </div>
+    <div class="content">
+    </div>
+  </div>
+  <script src="../js/utils/modoescuroeclaro.js"></script>
+  <script src="../js/utils/relogio.js"></script>
+  <script src="../js/auth/novasenha.js"></script>
+  <script src="../js/auth/login.js"></script>
 </body>
 </html>
-

@@ -1,65 +1,34 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lista de Tarefas</title>
-  <link rel="stylesheet" href="../css/notas/Notas.css">
-  <link rel="stylesheet" href="../css/global.css"/>
+  <link rel="stylesheet" href="../css/notas/tabelinha.css">
+  <title>Bloco de Notas</title>
 </head>
+
 <body>
-  <main class="phone">
-    <header class="top-bar">
-      <button class="icon-btn">👤</button>
-      <input type="text" placeholder="Pesquisar... 🔍" class="pesquisar">
-      <a href="../telaEditar/Editar.html">
-        <button class="adicao">➕</button>
-      </a>    
-    </header>
+  <div class="iphone-frame">
+    <div class="status-bar">
+      <div id="clock">00:00</div>
+    </div>
+  </div>
+  <h1>📒 Blocos de Anotações</h1>
 
-    <section>
-      <div class="bloco">
-        <input type="text" class="input-titulo" placeholder="Título da tarefa" maxlength="20"> 
-        <textarea class="input-tarefa"  maxlength="96"></textarea>
-        <div class="acoes">
-          <button class="butao excluir" >
-            <img src="../img/lixeira.png" alt="Excluir">
-          </button>
-          <button class="butao" onclick="location.href='../Tela_de_editar/Editar.html'">
-            <img src="../img/lapis.png" alt="Editar">
-          </button>
-        </div>
-      </div>
-      
-      <div class="bloco">
-        <input type="text" class="input-titulo" placeholder="Título da tarefa" maxlength="20">
-        <textarea class="input-tarefa" maxlength="96"></textarea>
-        <div class="acoes">
-          <button class="butao excluir">
-            <img src="../img/lixeira.png" alt="Excluir">
-          </button>
-          <button class="butao" onclick="location.href='../Tela_de_editar/Editar.html'">
-            <img src="../img/lapis.png" alt="Editar">
-          </button>
-        </div>
-      </div>
-      
-      <div class="bloco">
-        <input type="text" class="input-titulo" placeholder="Título da tarefa" maxlength="20">
-        <textarea class="input-tarefa"  maxlength="96"></textarea>
-        <div class="acoes">
-          <button class="butao excluir">
-            <img src="../img/lixeira.png" alt="Excluir">
-          </button>
-          <button class="butao" onclick="location.href='../Tela_de_editar/Editar.html'">
-            <img src="../img/lapis.png" alt="Editar">
-          </button>
-        </div>
-      </div>
-      
-    </section>
-  </main>
-  
 
+  <button onclick="criarBloco()">➕ Criar</button>
+
+  <div class="container" id="areaBlocos"></div>
+
+  <div class="tab-bar">
+    <div><a href="../index.html">🏠</a></div>
+    <span class="dark-toggle" onclick="toggleDark()">🌙</span>
+  </div>
+
+  <script src="../js/utils/criarbloco.js"></script>
+  <script src="../js/utils/relogio.js"></script>
+  <script src="../js/utils/modoescuroeclaro.js"></script>
 </body>
+
 </html>
