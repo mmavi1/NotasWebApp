@@ -76,6 +76,11 @@ Sinta-se à vontade para contribuir com melhorias, correções ou novas funciona
 
 ---
 
+## 🧩 Modelo de Banco de Dados
+Visualize o modelo de banco de dados em [nosso repositório](/docs/mermaid/planoDeBancoDeDados.md)
+
+---
+
 ## 📝 **Licença**
 Este projeto está licenciado sob a [Licença MIT](LICENSE).
 
