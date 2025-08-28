@@ -21,12 +21,12 @@ h1 {
 
 button {
   width: 100%;
-  margin: 8px 0;
-  padding: 12px;
+  margin: 9px 0;
+  padding: 10px;
   font-size: 16px;
   border: none;
   border-radius: 10px;
-  background: linear-gradient(135deg, #4caf50, #45a049);
+  background: linear-gradient(135deg, #6C5CE7, #6C5CE7);
   color: white;
   cursor: pointer;
   transition: 0.2s;
@@ -46,7 +46,7 @@ button:hover {
 }
 
 .bloco {
-  background: #fffdf5;
+  background: #ffffff;
   border-radius: 14px;
   padding: 15px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
@@ -92,7 +92,7 @@ input.titulo-input {
 }
 
 .btn-excluir {
-  background: linear-gradient(135deg, #e53935, #c62828);
+  background: linear-gradient(135deg, #c62828, #c62828);
 }
 
 .tab-bar {
@@ -108,6 +108,12 @@ input.titulo-input {
   border-top: 1px solid #ddd;
   backdrop-filter: blur(5px);
 }
+.titulo-link {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  font-size: 16px;
+}
 
 @media (min-width: 600px) {
   .container {
@@ -115,6 +121,7 @@ input.titulo-input {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   }
   button {
-    width: auto;
+    width: 17%;
+    height: 40px;
   }
 }

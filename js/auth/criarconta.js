@@ -9,14 +9,12 @@
         return false;
       }
 
-      // Salva os dados no localStorage
       localStorage.setItem("usuarioNome", nome);
       localStorage.setItem("usuarioEmail", email);
       localStorage.setItem("usuarioSenha", senha);
 
       alert("Conta criada com sucesso!\nBem-vindo, " + nome);
 
-      // Redireciona para a tela de login
       window.location.href = "index.html";
       return false;
     }

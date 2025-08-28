@@ -1,0 +1,34 @@
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/notas/tabelinha.css">
+  <title>Bloco de Notas</title>
+</head>
+<body>
+  <div class="iphone-frame">
+    <div class="status-bar">
+      <div id="clock">00:00</div>
+    </div>
+  </div>
+
+  <h1 id="tituloLista">📒 Bloco de Notas</h1>
+
+  <div class="container">
+    <div class="bloco">
+      <div id="conteudo" class="conteudo" contenteditable="true"></div>
+      <div class="acoes">
+        <button onclick="salvar()">💾 Salvar</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-bar">
+    <div><a href="listas.html">🏠</a></div>
+    <span class="dark-toggle" onclick="toggleDark()">🌙</span>
+  </div>
+  <script src="/js/utils/relogio.js"></script>
+  <script src="/js/utils/modoescuroeclaro.js"></script>
+  <script src="/js/utils/bloco.js"></script>
+</body>
+</html>
