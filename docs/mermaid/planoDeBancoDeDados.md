@@ -17,7 +17,7 @@
   class Item {
     +id: int <<PK>>
     descricao: text
-    data_criacao: datetime = now()
+    data_criacao: datetime <<not null>>
     data_limite: datetime <<nullable>>
     +usuario_id: int <<FK>>
   }
