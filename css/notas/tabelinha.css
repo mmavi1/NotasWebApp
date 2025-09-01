@@ -87,7 +87,6 @@ input.titulo-input {
 
 .acoes {
   display: flex;
-  flex-direction: column;
   gap: 8px;
 }
 
@@ -112,6 +111,12 @@ input.titulo-input {
   text-decoration: none;
   color: #333;
   font-weight: bold;
+  font-size: 20px;
+}
+
+.descricao-link {
+  text-decoration: none;
+  color: #111111;
   font-size: 16px;
 }
 
