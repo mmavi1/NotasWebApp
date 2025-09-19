@@ -18,11 +18,15 @@ h1 {
   color: #8d8d8d;
   margin-bottom: 15px;
 }
+button a{
+  text-decoration: none;
+  color: white;
+}
 
 button {
+
   width: 100%;
   margin: 9px 0;
-  padding: 10px;
   font-size: 16px;
   border: none;
   border-radius: 10px;
@@ -92,6 +96,7 @@ input.titulo-input {
 
 .btn-excluir {
   background: linear-gradient(135deg, #c62828, #c62828);
+  width: 80px;
 }
 
 .tab-bar {

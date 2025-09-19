@@ -1,8 +1,16 @@
+const url = "https://68c0af890b196b9ce1c4d908.mockapi.io/";
+const endpoint = url + "items";
+
+const area = document.getElementById("areaTitulos");
+area.innerHTML = "";
+
 let titulos = JSON.parse(localStorage.getItem("titulos")) || [];
+
 
 function salvarTitulos() {
   localStorage.setItem("titulos", JSON.stringify(titulos));
 }
+
 
 function criarTitulo() {
   const nome = prompt("Digite o Título");
@@ -18,44 +26,63 @@ function criarTitulo() {
 }
 
 
-function excluirTitulo(nome) {
+function excluirLocalStorageTitulo(nome) {
   if (confirm(`Deseja excluir "${nome}"?`)) {
     titulos = titulos.filter(t => t !== nome);
     localStorage.removeItem(`bloco_${nome}`);
     salvarTitulos();
     renderizarTitulo();
-
   }
 }
 
-function renderizarTitulo() {
-  const area = document.getElementById("areaTitulos");
-  area.innerHTML = "";
 
-  titulos.forEach(nome => {
-    const div = document.createElement("div");
-    div.classList.add("bloco");
-
-    const link = document.createElement("a");
-    link.textContent = nome;
-    link.href = `bloco.html?titulo=${encodeURIComponent(nome)}`;
-    link.classList.add("titulo-link");
-
-    const descricao = document.createElement("a");
-    descricao.textContent = localStorage.getItem(`bloco_${nome}`)
-    descricao.classList.add("descricao-link")
-
-    const btnExcluir = document.createElement("button");
-    btnExcluir.textContent = "Excluir";
-    btnExcluir.classList.add("btn-excluir");
-    btnExcluir.onclick = () => excluirTitulo(nome);
-
-    div.appendChild(link);
-    div.appendChild(descricao);
-    div.appendChild(btnExcluir);
-    area.appendChild(div);
-
-  });
+function excluirApiItem(id, descricao) {
+  if (confirm(`Deseja excluir "${descricao}" da API?`)) {
+    fetch(endpoint + "/" + id, { method: "DELETE" })
+      .then(response => {
+        if (!response.ok) throw new Error("Erro ao excluir");
+        renderizarTitulo();
+      })
+      .catch(error => console.error(error));
+  }
 }
+
+
+function renderizarTitulo() {
+  area.innerHTML = ""; 
+ 
+  fetch(endpoint)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error("Erro na requisição: " + response.status);
+      }
+      return response.json();
+    })
+    .then(data => {
+      data.forEach(item => {
+        const div = document.createElement("div");
+        div.classList.add("bloco");
+
+        const link = document.createElement("a");
+        link.textContent = item.descricao;
+        link.href = `bloco.html?titulo=${encodeURIComponent(item.descricao)}`;
+        link.classList.add("titulo-link");
+
+        const btnExcluir = document.createElement("button");
+        btnExcluir.textContent = "Excluir";
+        btnExcluir.classList.add("btn-excluir");
+        btnExcluir.onclick = () => excluirApiItem(item.id, item.descricao);
+
+        div.appendChild(link);
+        div.appendChild(btnExcluir);
+        area.appendChild(div);
+      });
+    })
+    .catch(error => {
+      console.error("Erro:", error);
+    });
+}
+
 renderizarTitulo();
-document.getElementById("btnCriar").addEventListener("click", criarTitulo);
+
+
