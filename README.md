@@ -90,3 +90,6 @@ Este projeto está licenciado sob a [Licença MIT](LICENSE).
 Caso tenha dúvidas ou sugestões, entre em contato:  
 **Nome:** João Nascimento  
 **Email:** [seuemail@exemplo.com](mailto:seuemail@exemplo.com)
+
+## **Acessar**
+**acesse o site pelo link:** [site de notas](notas-web-app.vercel.app)

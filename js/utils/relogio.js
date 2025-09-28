@@ -1,8 +1,15 @@
-function atualizarRelogio() {
-    const agora = new Date();
-    const horas = agora.getHours().toString().padStart(2, '0');
-    const minutos = agora.getMinutes().toString().padStart(2, '0');
-    document.getElementById("clock").textContent = `${horas}:${minutos}`;
+
+function updateClock() {
+    const clock = document.getElementById('clock');
+    const now = new Date();
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    clock.textContent = `${hours}:${minutes}`;
 }
-atualizarRelogio();
-setInterval(atualizarRelogio, 1000);
+
+updateClock();
+setInterval(updateClock, 1000);
+
+function toggleDark() {
+    document.body.classList.toggle('dark');
+}

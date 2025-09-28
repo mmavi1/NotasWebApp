@@ -1,45 +1,45 @@
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: #f0f2f5;
+  background: #f9fafc; /* tom mais claro */
   margin: 0;
   padding: 15px;
-  color: rgb(0, 0, 0);
-  transition: 0.3s;
+  color: #222; /* texto mais visível */
+  transition: background 0.3s, color 0.3s;
 }
 
 body.dark {
-  background-color: #000000;
-  color: rgb(143, 143, 143);
+  background-color: #121212; /* dark mode moderno */
+  color: #e0e0e0; /* texto claro */
 }
 
 h1 {
   text-align: center;
-  font-size: 22px;
-  color: #8d8d8d;
-  margin-bottom: 15px;
+  font-size: 24px;
+  color: #6c5ce7; /* roxo de destaque */
+  margin-bottom: 20px;
 }
-button a{
+
+button a {
   text-decoration: none;
-  color: white;
+  color: inherit;
 }
 
 button {
-
   width: 100%;
   margin: 9px 0;
   font-size: 16px;
   border: none;
   border-radius: 10px;
-  background: linear-gradient(135deg, #6C5CE7, #6C5CE7);
-  color: white;
+  background: linear-gradient(135deg, #6c5ce7, #8e44ad); /* roxo degradê */
+  color: #fff;
   cursor: pointer;
-  transition: 0.2s;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 10px rgba(108, 92, 231, 0.3);
 }
 
 button:hover {
-  opacity: 0.9;
-  transform: scale(1.02);
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 6px 14px rgba(108, 92, 231, 0.45);
 }
 
 .container {
@@ -53,10 +53,14 @@ button:hover {
   background: #ffffff;
   border-radius: 14px;
   padding: 15px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
-  transition: 0.2s;
+  transition: background 0.2s;
+}
+
+body.dark .bloco {
+  background: #1e1e1e;
 }
 
 input.titulo-input {
@@ -67,26 +71,36 @@ input.titulo-input {
   padding: 10px;
   margin-bottom: 12px;
   outline: none;
-  background: #fff;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.08);
+  background: #f1f1f1;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+}
+
+body.dark input.titulo-input {
+  background: #2a2a2a;
+  color: #fff;
 }
 
 .conteudo {
   flex-grow: 1;
   min-height: 100px;
   outline: none;
-  padding: 10px;
-  font-size: 14px;
+  padding: 12px;
+  font-size: 15px;
   color: #333;
-  background: #fff;
+  background: #fafafa;
   border-radius: 10px;
-  box-shadow: inset 0 2px 5px rgba(0,0,0,0.08);
+  box-shadow: inset 0 2px 6px rgba(0,0,0,0.08);
   margin-bottom: 12px;
+}
+
+body.dark .conteudo {
+  background: #2a2a2a;
+  color: #ddd;
 }
 
 .conteudo:empty:before {
   content: "✍️ Escreva sua anotação aqui...";
-  color: #8a8a8a;
+  color: #aaa;
 }
 
 .acoes {
@@ -95,8 +109,9 @@ input.titulo-input {
 }
 
 .btn-excluir {
-  background: linear-gradient(135deg, #c62828, #c62828);
-  width: 80px;
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+  width: 90px;
+  box-shadow: 0 3px 8px rgba(231, 76, 60, 0.3);
 }
 
 .tab-bar {
@@ -105,24 +120,39 @@ input.titulo-input {
   left: 0;
   width: 100%;
   height: 55px;
-  background-color: rgba(0,0,0,0.05);
+  background-color: rgba(255,255,255,0.8);
   display: flex;
   justify-content: space-around;
   align-items: center;
   border-top: 1px solid #ddd;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(10px);
+  transition: background 0.3s;
 }
+
+body.dark .tab-bar {
+  background-color: rgba(18,18,18,0.9);
+  border-top: 1px solid #333;
+}
+
 .titulo-link {
   text-decoration: none;
-  color: #333;
+  color: #6c5ce7;
   font-weight: bold;
   font-size: 20px;
 }
 
 .descricao-link {
   text-decoration: none;
-  color: #111111;
+  color: #444;
   font-size: 16px;
+}
+
+body.dark .titulo-link {
+  color: #a29bfe;
+}
+
+body.dark .descricao-link {
+  color: #bbb;
 }
 
 @media (min-width: 600px) {
@@ -131,7 +161,8 @@ input.titulo-input {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   }
   button {
-    width: 17%;
-    height: 40px;
+    width: auto;
+    padding: 0 18px;
+    height: 42px;
   }
 }

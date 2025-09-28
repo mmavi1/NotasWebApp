@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../css/cadastro/senha.css">
+<script src="../js/auth/senha.js" defer></script>
+<script src="../js/utils/modoescuroeclaro.js"></script>
+
+
+<title>Criação de Senha</title>
+</head>
+<body>
+  <div class="reset-box">
+    <span class="dark-toggle" onclick="toggleDark()">🌙</span>
+    <h2>✅ Criação de Senha</h2>
+
+    <form id="form-senha">
+      <div class="input-group">
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" placeholder="Digite sua senha" required>
+      </div>
+
+      <div class="input-group">
+        <label for="confirmarSenha">Confirmar Senha</label>
+        <input type="password" id="confirmarSenha" placeholder="Confirme sua senha" required>
+      </div>
+
+      <div class="checks" aria-live="polite">
+        <div id="item-especial" class="check-item fail">
+          <div class="symbol">✗</div>
+          <div>Tem caracter especial</div>
+        </div>
+
+        <div id="item-maiuscula" class="check-item fail">
+          <div class="symbol">✗</div>
+          <div>Tem letra maiúscula</div>
+        </div>
+
+        <div id="item-numero" class="check-item fail">
+          <div class="symbol">✗</div>
+          <div>Tem número</div>
+        </div>
+
+        <div id="item-tamanho" class="check-item fail">
+          <div class="symbol">✗</div>
+          <div>Mínimo 8 caracteres</div>
+        </div>
+
+        <div id="item-match" class="check-item fail" style="margin-top:8px;">
+          <div class="symbol">✗</div>
+          <div>Senhas coincidem</div>
+        </div>
+      </div>
+
+      <div class="btn-wrap">
+        <button id="cadastrar"><a href="../index.html">Cadastrar</a></button>
+      </div>
+
+      <div class="footer muted">
+        Já tem uma conta? <a href="../index.html">Login</a>
+      </div>
+    </form>
+  </div>
+</div>
+</body>
+</html>

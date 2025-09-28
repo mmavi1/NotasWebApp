@@ -1,102 +1,211 @@
-/* ====== Estilo Tela de Cadastro / Nova Senha ====== */
-
+:root {
+  --bg: #f5f7fb;
+  --card-bg: #fff;
+  --border: #e0e0e0;
+  --text: #1a1a1a;
+  --muted: #6d6d6d;
+  --primary: #6c5ce7;
+  --primary-dark: #4b36e0;
+  --danger: #e74c3c;
+  --shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+a{
+  text-decoration: none;
+  color: white;
+}
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: #f0f2f5;
+  background: var(--bg);
+  color: var(--text);
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
   margin: 0;
+  transition: background 0.3s, color 0.3s;
 }
 
 .reset-box {
-  background-color: #fff;
-  padding: 30px 35px;
-  border-radius: 15px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  background: var(--card-bg);
+  padding: 40px 45px;
+  border-radius: 20px;
+  box-shadow: var(--shadow);
   width: 380px;
   text-align: center;
+  animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .logo {
-  width: 60px;
-  height: 60px;
-  margin: 0 auto 15px;
-  background: linear-gradient(135deg, #6C5CE7, #8b7ef5);
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 20px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #fff;
-  font-weight: 700;
-  font-size: 22px;
+  overflow: hidden;
+  box-shadow: 0 6px 16px rgba(108, 92, 231, 0.45);
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 h2 {
   margin-bottom: 25px;
-  font-size: 22px;
+  font-size: 26px;
   font-weight: 700;
-  color: #111;
 }
 
 .input-group {
   margin-bottom: 18px;
   text-align: left;
+  width: 100%;
 }
 
 .input-group label {
   display: block;
-  margin-bottom: 6px;
+  margin-bottom: 10px;
   font-size: 14px;
-  color: #555;
+  color: var(--muted);
+  font-weight: 500;
 }
 
 .input-group input {
   width: 100%;
   padding: 12px 15px;
-  border-radius: 10px;
-  border: 1px solid #ddd;
-  font-size: 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  font-size: 15px;
   outline: none;
-  transition: 0.2s;
+  background: var(--card-bg);
+  color: var(--text);
+  transition: border 0.25s, box-shadow 0.25s, transform 0.15s;
 }
 
 .input-group input:focus {
-  border-color: #6C5CE7;
-  box-shadow: 0 0 0 3px rgba(108,92,231,0.2);
-  background-color: #fff;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(108,92,231,0.2);
+  transform: scale(1.01);
 }
 
 .btn {
   width: 100%;
-  padding: 12px;
-  background: linear-gradient(135deg, #6C5CE7, #5849e7);
+  padding: 14px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
   color: #fff;
   border: none;
-  border-radius: 10px;
+  border-radius: 14px;
   font-weight: 600;
-  font-size: 15px;
+  font-size: 16px;
   cursor: pointer;
-  margin-top: 10px;
-  transition: 0.2s;
+  margin-top: 12px;
+  box-shadow: 0 6px 16px rgba(108, 92, 231, 0.45);
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .btn:hover {
-  opacity: 0.9;
-  transform: translateY(-2px);
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 10px 24px rgba(108, 92, 231, 0.55);
+}
+
+.chek {
+  position: relative;
+  margin: 10px 0;
+}
+
+.chek input[type="checkbox"] {
+  opacity: 0;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.chek label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.chek .custom-check {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #333;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  transition: all 0.2s;
+  overflow: hidden;
+}
+
+.chek .custom-check img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: none;
+}
+
+.chek input[type="checkbox"]:checked + label .custom-check img {
+  display: block;
 }
 
 .extra-links {
-  margin-top: 15px;
+  margin-top: 20px;
+  text-align: center;
 }
 
 .extra-links a {
-  color: #6C5CE7;
+  color: var(--primary);
   text-decoration: none;
   font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s, text-decoration 0.2s;
 }
 
 .extra-links a:hover {
   text-decoration: underline;
+  color: var(--primary-dark);
+}
+
+body.dark {
+  --bg: #121212;
+  --card-bg: #1e1e1e;
+  --border: #333;
+  --text: #e0e0e0;
+  --muted: #aaa;
+  --shadow: 0 14px 32px rgba(0,0,0,0.6);
+}
+
+body.dark .logo {
+  background: linear-gradient(135deg, #8b7ef5, var(--primary));
+  box-shadow: 0 6px 18px rgba(108, 92, 231, 0.6);
+}
+a{
+  text-decoration: none;
+  color: wh;
+}
+
+@media (max-width: 420px) {
+  .reset-box {
+    width: 92%;
+    padding: 28px 20px;
+    border-radius: 16px;
+  }
+  h2 { font-size: 22px; }
+  .btn { font-size: 15px; padding: 12px; }
 }

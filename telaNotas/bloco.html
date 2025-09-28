@@ -3,7 +3,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../css/notas/tabelinha.css">
-  <title>Bloco de Notas</title>
+  <title>Editar Notas</title>
 </head>
 <body>
   <div class="iphone-frame">
@@ -12,14 +12,15 @@
     </div>
   </div>
 
-  <h1 id="tituloLista">📒 Bloco de Notas</h1>
+  <h1 id="tituloLista">DevNotes</h1>
+  <button id="btnCriar"><a href="listas.html">◀️ Voltar</a></button> 
+
 
   <div class="container">
     <div class="bloco">
-      <div id="conteudo" class="conteudo" contenteditable="false"></div>
+      <div id="conteudo" class="conteudo" contenteditable="true"></div>
       <div class="acoes">
         <button onclick="salvar()">💾 Salvar</button>
-        <button onclick="editar()">📝 Editar</button>
       </div>
     </div>
   </div>

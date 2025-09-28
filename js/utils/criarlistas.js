@@ -1,44 +1,39 @@
-const url = "https://68c0af890b196b9ce1c4d908.mockapi.io/";
-const endpoint = url + "items";
+const url = "https://notas-api-qvzz.onrender.com";
+const endpointItems = url + "/usuarios";
 
 const area = document.getElementById("areaTitulos");
-area.innerHTML = "";
 
-let titulos = JSON.parse(localStorage.getItem("titulos")) || [];
+function criarItem() {
+  const novoItem = document.getElementById("conteudo").value; // melhor usar .value se for <input> ou <textarea>
+  console.log(novoItem);
 
+  const novoUsuario = {
+    "descricao": novoItem,
+    "nome": novoItem, // <<< adicionando o nome para aparecer na tela
+    "dataLimite": "2025-09-23T00:25:34.663Z",
+    "usuarioId": 1
+  };
 
-function salvarTitulos() {
-  localStorage.setItem("titulos", JSON.stringify(titulos));
+  fetch(endpointItems, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json" // indicando que está enviando JSON
+    },
+    body: JSON.stringify(novoUsuario)
+  })
+    .then(response => {
+      if (!response.ok) throw new Error("Erro ao salvar");
+      return response.json();
+    })
+    .then(() => renderizarTitulo())
+    .catch(error => console.error(error));
 }
-
-
-function criarTitulo() {
-  const nome = prompt("Digite o Título");
-  if (!nome) return;
-
-  if (titulos.includes(nome)) {
-    alert("Este título já existe!");
-    return;
-  }
-  titulos.push(nome);
-  salvarTitulos();
-  renderizarTitulo();
-}
-
-
-function excluirLocalStorageTitulo(nome) {
-  if (confirm(`Deseja excluir "${nome}"?`)) {
-    titulos = titulos.filter(t => t !== nome);
-    localStorage.removeItem(`bloco_${nome}`);
-    salvarTitulos();
-    renderizarTitulo();
-  }
-}
-
 
 function excluirApiItem(id, descricao) {
   if (confirm(`Deseja excluir "${descricao}" da API?`)) {
-    fetch(endpoint + "/" + id, { method: "DELETE" })
+    let urlFinal = endpointItems + "/" + id;
+
+    fetch(urlFinal, { method: "DELETE" })
       .then(response => {
         if (!response.ok) throw new Error("Erro ao excluir");
         renderizarTitulo();
@@ -47,11 +42,10 @@ function excluirApiItem(id, descricao) {
   }
 }
 
-
 function renderizarTitulo() {
-  area.innerHTML = ""; 
- 
-  fetch(endpoint)
+  area.innerHTML = ""; // <<< limpa antes de renderizar novamente
+
+  fetch(endpointItems)
     .then(response => {
       if (!response.ok) {
         throw new Error("Erro na requisição: " + response.status);
@@ -63,26 +57,23 @@ function renderizarTitulo() {
         const div = document.createElement("div");
         div.classList.add("bloco");
 
+        // Mostrando o nome (se existir) ou a descrição
         const link = document.createElement("a");
-        link.textContent = item.descricao;
-        link.href = `bloco.html?titulo=${encodeURIComponent(item.descricao)}`;
+        link.textContent = item.nome || item.descricao;
+        link.href = `bloco.html?titulo=${encodeURIComponent(item.nome || item.descricao)}`;
         link.classList.add("titulo-link");
 
         const btnExcluir = document.createElement("button");
         btnExcluir.textContent = "Excluir";
         btnExcluir.classList.add("btn-excluir");
-        btnExcluir.onclick = () => excluirApiItem(item.id, item.descricao);
+        btnExcluir.onclick = () => excluirApiItem(item.id, item.nome || item.descricao);
 
         div.appendChild(link);
         div.appendChild(btnExcluir);
         area.appendChild(div);
       });
     })
-    .catch(error => {
-      console.error("Erro:", error);
-    });
+    .catch(error => console.error("Erro:", error));
 }
 
 renderizarTitulo();
-
-
