@@ -1,12 +1,19 @@
+// --- Modo Escuro / Claro Persistente --- //
+
 function toggleDark() {
+
   document.body.classList.toggle('dark');
-  if (document.body.classList.contains('dark')) {
-    localStorage.setItem('darkMode', 'on');
-  } else {
-    localStorage.setItem('darkMode', 'off');
-  }
+
+  // Salva a preferência
+  const isDark = document.body.classList.contains('dark');
+  localStorage.setItem('darkMode', isDark ? 'on' : 'off');
 }
 
-if (localStorage.getItem('darkMode') === 'on') {
-  document.body.classList.add('dark');
-}
+// Aplica automaticamente o modo salvo
+document.addEventListener("DOMContentLoaded", () => {
+  const savedMode = localStorage.getItem("darkMode");
+  if (savedMode === "on") {
+    document.body.classList.add("dark");
+  }
+});
+
