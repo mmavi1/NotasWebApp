@@ -8,6 +8,6 @@ form.addEventListener("submit", function(event){
   if (email ===""|| senha ==="") {
     alert("Por favor,preencha todos os campos!");
   } else {
-    window.location.href = "../../telaNotas/listas.html";
+    window.location.href = "../../notas/listas.html";
   }
 });

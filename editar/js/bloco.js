@@ -8,7 +8,7 @@ const textAreaElements = document.getElementById('conteudo');
 function salvar() {
   localStorage.setItem(`bloco_${titulo}`, textAreaElements.innerHTML);
   alert("Anotação salva!");
-  window.location.href = "/telaNotas/listas.html"
+  window.location.href = "../notas/listas.html"
   
 }
 
