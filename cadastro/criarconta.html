@@ -5,13 +5,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Criar Conta</title>
+  <link rel="stylesheet" href="css/senha.css">  
   <script src="/js/modoescuroeclaro.js" defer></script>
   <link rel="stylesheet" href="css/criarconta.css">
 </head>
+
 <body>
   <div class="reset-box">
     <span class="dark-toggle" onclick="toggleDark()">🌙</span>
-    <h2>Criar Conta</h2>
+    <h2>✅ Criar Conta</h2>
     <form onsubmit="return validarCadastro()">
       <div class="input-group">
         <label for="nome">Nome Completo</label>
@@ -22,8 +24,47 @@
         <label for="email">Email</label>
         <input type="email" id="email" placeholder="Digite seu email" required>
       </div>
-   
-      <button type="submit" class="btn"><a href="senha.html">Continuar</a></button>
+
+      
+      <div class="input-group">
+        <label for="password">Senha</label>
+        <input type="password" id="password" placeholder="Digite sua senha" required>
+      </div>
+
+      <div class="input-group">
+        <label for="confirmarSenha">Confirmar Senha</label>
+        <input type="password" id="confirmarSenha" placeholder="Confirme sua senha" required>
+      </div>
+
+      <div class="checks" aria-live="polite">
+        <div id="item-especial" class="check-item fail">
+          <div class="symbol">✗</div>
+          <div>Tem caracter especial</div>
+        </div>
+
+        <div id="item-maiuscula" class="check-item fail">
+          <div class="symbol">✗</div>
+          <div>Tem letra maiúscula</div>
+        </div>
+
+        <div id="item-numero" class="check-item fail">
+          <div class="symbol">✗</div>
+          <div>Tem número</div>
+        </div>
+
+        <div id="item-tamanho" class="check-item fail">
+          <div class="symbol">✗</div>
+          <div>Mínimo 8 caracteres</div>
+        </div>
+
+        <div id="item-match" class="check-item fail" style="margin-top:8px;">
+          <div class="symbol">✗</div>
+          <div>Senhas coincidem</div>
+        </div>
+
+        <button type="button" class="btn" id="botao">Continuar</button>
+
+
     </form>
 
     <div class="extra-links">
@@ -31,9 +72,10 @@
     </div>
   </div>
 
-  <script src="../js/auth/criarconta.js"></script>
-  <script src="../js/utils/modoescuroeclaro.js"></script>
-  
+  <script src="../js/modoescuroeclaro.js"></script>
+  <script src="../js/global.js"></script>
+  <script src="js/criarconta.js"></script>
+  <script src="js/senha.js" defer></script>
 </body>
 
 </html>
