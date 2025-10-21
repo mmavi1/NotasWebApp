@@ -1,79 +1,82 @@
 const url = "https://notas-api-qvzz.onrender.com";
-const endpointItems = url + "/usuarios";
+const endpointItems = url + "/itens";
 
 const area = document.getElementById("areaTitulos");
 
 function criarItem() {
-  const novoItem = document.getElementById("conteudo").value; // melhor usar .value se for <input> ou <textarea>
-  console.log(novoItem);
+    //const itemCriado = document.getElementById("conteudo").value;
+    //console.log(itemCriado);
 
-  const novoUsuario = {
-    "descricao": novoItem,
-    "nome": novoItem, // <<< adicionando o nome para aparecer na tela
-    "dataLimite": "2025-09-23T00:25:34.663Z",
-    "usuarioId": 1
-  };
+    //descobre a hora de agr
+    const agr = new Date();
 
-  fetch(endpointItems, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json" // indicando que está enviando JSON
-    },
-    body: JSON.stringify(novoUsuario)
-  })
-    .then(response => {
-      if (!response.ok) throw new Error("Erro ao salvar");
-      return response.json();
+    const novoItem = {
+        "descricao": "bolo",
+        "nome": "novoItem",
+        "dataLimite": agr.toDateString(),
+        "usuarioId": 46
+    };
+
+    fetch(endpointItems, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(itemCriado)
     })
-    .then(() => renderizarTitulo())
-    .catch(error => console.error(error));
+        .then(response => {
+            if (!response.ok) throw new Error("Erro ao salvar");
+            return response.json();
+        })
+        .then(() => renderizarTitulo())
+        .catch(error => console.error(error));
 }
 
 function excluirApiItem(id, descricao) {
-  if (confirm(`Deseja excluir "${descricao}" da API?`)) {
-    let urlFinal = endpointItems + "/" + id;
+    if (confirm(`Deseja excluir "${descricao}" da API?`)) {
+        let urlFinal = endpointItems + "/" + id;
 
-    fetch(urlFinal, { method: "DELETE" })
-      .then(response => {
-        if (!response.ok) throw new Error("Erro ao excluir");
-        renderizarTitulo();
-      })
-      .catch(error => console.error(error));
-  }
+        fetch(urlFinal, { method: "DELETE" })
+            .then(response => {
+                if (!response.ok) throw new Error("Erro ao excluir");
+                renderizarTitulo();
+            })
+            .catch(error => console.error(error));
+    }
 }
 
 function renderizarTitulo() {
-  area.innerHTML = ""; // <<< limpa antes de renderizar novamente
+    area.innerHTML = ""; // <<< limpa antes de renderizar novamente
 
-  fetch(endpointItems)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error("Erro na requisição: " + response.status);
-      }
-      return response.json();
-    })
-    .then(data => {
-      data.forEach(item => {
-        const div = document.createElement("div");
-        div.classList.add("bloco");
+    fetch(endpointItems)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Erro na requisição: " + response.status);
+            }
+            return response.json();
+        })
+        .then(data => {
+            data.forEach(item => {
+                const div = document.createElement("div");
+                div.classList.add("bloco");
 
-        // Mostrando o nome (se existir) ou a descrição
-        const link = document.createElement("a");
-        link.textContent = item.nome || item.descricao;
-        link.href = `bloco.html?titulo=${encodeURIComponent(item.nome || item.descricao)}`;
-        link.classList.add("titulo-link");
+                // Mostrando o nome (se existir) ou a descrição
+                const link = document.createElement("a");
+                link.textContent = item.nome || item.descricao;
+                link.href = `bloco.html?titulo=${encodeURIComponent(item.nome || item.descricao)}`;
+                link.classList.add("titulo-link");
 
-        const btnExcluir = document.createElement("button");
-        btnExcluir.textContent = "Excluir";
-        btnExcluir.classList.add("btn-excluir");
-        btnExcluir.onclick = () => excluirApiItem(item.id, item.nome || item.descricao);
+                const btnExcluir = document.createElement("button");
+                btnExcluir.textContent = "Excluir";
+                btnExcluir.classList.add("btn-excluir");
+                btnExcluir.onclick = () => excluirApiItem(item.id, item.nome || item.descricao);
 
-        div.appendChild(link);
-        div.appendChild(btnExcluir);
-        area.appendChild(div);
-      });
-    })
-    .catch(error => console.error("Erro:", error));
+                div.appendChild(link);
+                div.appendChild(btnExcluir);
+                area.appendChild(div);
+            });
+        })
+        .catch(error => console.error("Erro:", error));
 }
 
 renderizarTitulo();
