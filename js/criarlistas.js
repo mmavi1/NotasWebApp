@@ -12,9 +12,8 @@ function criarItem() {
 
     const novoItem = {
         "descricao": "bolo",
-        "nome": "novoItem",
         "dataLimite": agr.toDateString(),
-        "usuarioId": 46
+        "usuarioId": 48
     };
 
     fetch(endpointItems, {
@@ -63,7 +62,7 @@ function renderizarTitulo() {
                 // Mostrando o nome (se existir) ou a descrição
                 const link = document.createElement("a");
                 link.textContent = item.nome || item.descricao;
-                link.href = `bloco.html?titulo=${encodeURIComponent(item.nome || item.descricao)}`;
+                link.href = `../editar/bloco.html?titulo=${encodeURIComponent(item.nome || item.descricao)}`;
                 link.classList.add("titulo-link");
 
                 const btnExcluir = document.createElement("button");

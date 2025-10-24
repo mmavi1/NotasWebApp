@@ -20,7 +20,7 @@ function criarItem(descricao) {
   const novoItem = {
       "descricao": descricao,
       "dataLimite": agr.toISOString(),
-      "usuarioId": 46
+      "usuarioId": 49
   };
 
   fetch(endpointItems, {
@@ -34,10 +34,25 @@ function criarItem(descricao) {
           if (!response.ok) throw new Error("Erro ao salvar");
           return response.json();
       })
-      .then(() => renderizarTitulo())
-      .catch(error => console.error(error));
+      .then(() => {
+          alert('Item salvo com sucesso!');
+          if (typeof renderizarTitulo === 'function') {
+              try {
+                  renderizarTitulo();
+              } catch (e) {
+                  console.error('Erro em renderizarTitulo:', e);
+              }
+          } else {
+              console.warn('renderizarTitulo não definida — pulando atualização de título.');
+          }
+      })
+      .catch(error => {
+          console.error(error);
+          alert('Erro ao salvar item. Tente novamente.');
+      });
 }
 function carregar() {
   const texto = localStorage.getItem(`bloco_${titulo}`);
   if (texto) textAreaElements.value = texto;
 }
+
